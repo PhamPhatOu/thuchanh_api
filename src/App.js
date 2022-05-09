@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import { Container } from 'react-bootstrap';
 import './App.css';
-
+import './Component/navigation';
+import Clock from './Component/table';
+import './Component/body'
+import { BrowserRouter, Route,  } from 'react-router-dom';
+import Navigation from './Component/navigation';
+import { Switch } from 'react-router-dom';
+import About from './Component/About';
+import Home from './Component/Home';
+import userDetail from './Component/userDetail';
+import Modal from './Component/Modal';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+ 
+      <Container>
+            <BrowserRouter>
+              <Navigation/>
+              <Switch>
+                <Route exact path="/Home" component={Home} />
+                <Route exact path="/About" component={About} />
+                <Route exact path="/User" component={Clock} />
+                <Route exact path="/modal" component={Modal}/>
+                {/* <Route exact path="/User/:UserID/userDetail" component={userDetail}/> */}
+              </Switch>
+            </BrowserRouter>
+      </Container>
+  
   );
 }
 
